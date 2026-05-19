@@ -1,0 +1,377 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_black">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header with back button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:contentDescription="Back"
+                    app:tint="@color/text_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Parameter Guide / 参数说明"
+                    android:textColor="@color/text_gold"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/gold_dark" />
+
+            <!-- Status Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Status Indicators / 状态指示"
+                android:textColor="@color/text_gold"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Updated" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Timestamp of the most recent Wi‑Fi scan data refresh. Displayed as a Unix epoch in milliseconds. A stagnant value means the app is not receiving fresh scan results.\n\n最近一次 Wi‑Fi 扫描数据刷新的时间戳，以毫秒级 Unix 时间戳显示。如果该值长时间不变，说明应用没有接收到新的扫描结果。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="WiFiEnabled" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Indicates whether the device's Wi‑Fi radio is currently turned on (true/false). If false, no scanning or positioning can occur.\n\n指示设备的 Wi‑Fi 无线功能是否已开启（true/false）。如果为 false，则无法进行扫描和定位。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="LocationEnabled" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Indicates whether Android location services (GPS or Network provider) are enabled. Wi‑Fi scanning on Android requires location services to be active due to privacy restrictions.\n\n指示 Android 定位服务（GPS 或网络定位）是否已开启。出于隐私保护，Android 系统要求定位服务开启后才能进行 Wi‑Fi 扫描。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="PermOK" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Whether the app has been granted the necessary location permissions (ACCESS_FINE_LOCATION or ACCESS_COARSE_LOCATION). Without these, Wi‑Fi scan results will be empty.\n\n应用是否已获得必要的位置权限（精确定位或粗略定位）。如果没有这些权限，Wi‑Fi 扫描结果将为空。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="startScanOk(last)" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The return value of the most recent WifiManager.startScan() call. true means the scan request was accepted; false means it was rejected (often due to Android's throttling — too many scans in a short period).\n\n最近一次调用 WifiManager.startScan() 的返回值。true 表示扫描请求被接受；false 表示被拒绝（通常是因为 Android 的限频机制——短时间内扫描次数过多）。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="startScanFailCount" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Running count of consecutive failed scan requests. Resets to 0 on the first successful scan. A high number suggests the system is rate‑limiting or blocking scan requests.\n\n连续扫描请求失败的累计次数。一旦扫描成功即重置为 0。数值较高说明系统正在限制或阻止扫描请求。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="msSinceLastStartScan" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Milliseconds elapsed since the last WifiManager.startScan() call was issued. Helps gauge scan freshness — if this exceeds the UI refresh interval, scans may be throttled.\n\n自上次发出 startScan() 调用以来经过的毫秒数。用于判断扫描数据的新鲜度——如果超过 UI 刷新间隔，说明扫描可能被限频。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="NewestResultAge(ms)" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Age of the newest scan result returned by the system, in milliseconds. A large value means the cached results are stale. Android typically refreshes results every few seconds.\n\n系统返回的最新扫描结果的存在时间（毫秒）。数值较大说明缓存结果已过时。Android 通常每隔几秒刷新一次扫描结果。" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Current Connection Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Current Connection / 当前连接"
+                android:textColor="@color/text_gold"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="SSID" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Service Set Identifier — the human‑readable name of the Wi‑Fi network your device is currently connected to (e.g. 'Campus-WiFi').\n\n服务集标识符——设备当前连接的 Wi‑Fi 网络的人类可读名称（例如 'Campus-WiFi'）。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="BSSID" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Basic Service Set Identifier — the MAC address of the specific access point you are connected to. Used to uniquely identify which AP hardware is serving your connection.\n\n基本服务集标识符——当前连接的特定接入点的 MAC 地址。用于唯一标识服务于你连接的 AP 硬件。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="IP" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The IPv4 address assigned to your device on the current Wi‑Fi network (e.g. 192.168.1.100).\n\n设备在当前 Wi‑Fi 网络上被分配的 IPv4 地址（例如 192.168.1.100）。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Gateway" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The default gateway IP address provided by DHCP. This is typically the router that forwards traffic from your device to external networks.\n\nDHCP 分配的默认网关 IP 地址。通常是将设备流量转发到外部网络的路由器。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Netmask" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The subnet mask (e.g. 255.255.255.0) that defines which IP addresses are on the same local subnet versus requiring routing through the gateway.\n\n子网掩码（例如 255.255.255.0），定义哪些 IP 地址属于同一本地子网，哪些需要通过网关路由。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="DNS1 / DNS2" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Domain Name System server addresses assigned by DHCP. These servers translate domain names (e.g. google.com) into IP addresses. DNS1 is primary; DNS2 is the fallback.\n\nDHCP 分配的域名系统服务器地址。这些服务器将域名（如 google.com）转换为 IP 地址。DNS1 为主服务器，DNS2 为备用服务器。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="RSSI" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Received Signal Strength Indicator — the power of the received Wi‑Fi signal, measured in dBm (decibel‑milliwatts). Values typically range from ‑30 (excellent) to ‑90 (poor). In positioning, stronger RSSI from a known AP means you are likely closer to it.\n\n接收信号强度指示——接收到的 Wi‑Fi 信号功率，单位为 dBm（分贝毫瓦）。数值通常在 ‑30（极佳）到 ‑90（极差）之间。在定位中，来自已知 AP 的 RSSI 越强，说明你离它越近。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Frequency" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The radio frequency in MHz on which the current connection operates (e.g. 2412, 5180, 5955). Determines the band and channel.\n\n当前连接使用的无线电频率，单位为 MHz（例如 2412、5180、5955）。决定了频段和信道。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Band" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The frequency band: 2.4 GHz (longer range, slower speed), 5 GHz (shorter range, faster speed), or 6 GHz (Wi‑Fi 6E/7, least congestion).\n\n频段：2.4 GHz（覆盖范围更广，速度较慢），5 GHz（覆盖范围较小，速度更快），6 GHz（Wi‑Fi 6E/7，拥塞最少）。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Channel" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The specific channel number within the frequency band (e.g. channel 6 at 2.4 GHz, channel 36 at 5 GHz). Derived from the frequency value.\n\n频段内的具体信道编号（例如 2.4 GHz 的信道 6，5 GHz 的信道 36）。由频率值推算得出。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="LinkSpeed" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The negotiated physical layer data rate of the current Wi‑Fi connection, in Mbps. This is the theoretical maximum speed between your device and the AP, not the actual throughput.\n\n当前 Wi‑Fi 连接协商的物理层数据速率，单位为 Mbps。这是设备与 AP 之间的理论最大速度，并非实际吞吐量。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="RxLinkSpeed / TxLinkSpeed" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Receive and transmit link speeds measured separately (available on Android 10+). Useful for diagnosing asymmetric connection issues.\n\n分别测量的接收和发送链路速度（Android 10 及以上可用）。用于诊断上下行不对称的连接问题。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="WiFiStandard" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The IEEE 802.11 protocol version used by the connection. Common values: 11n (Wi‑Fi 4), 11ac (Wi‑Fi 5), 11ax (Wi‑Fi 6), 11be (Wi‑Fi 7). Available on Android 11+.\n\n连接使用的 IEEE 802.11 协议版本。常见值：11n（Wi‑Fi 4），11ac（Wi‑Fi 5），11ax（Wi‑Fi 6），11be（Wi‑Fi 7）。Android 11 及以上可用。" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Scan Summary Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Scan Summary / 扫描摘要"
+                android:textColor="@color/text_gold"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="ALL APs" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Total number of access points detected in the most recent scan, including both known and unknown APs. A higher count usually means you are in a denser Wi‑Fi environment.\n\n最近一次扫描检测到的所有接入点总数，包括已知和未知 AP。数量越多通常意味着你处于 Wi‑Fi 密度较高的环境。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="KNOWN APs" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="Number of detected APs whose MAC addresses are registered in the app's fingerprint database. Only these APs participate in room inference. A low KNOWN/ALL ratio may indicate you are in an unmapped area.\n\n检测到的已注册在应用指纹数据库中的 AP 数量。只有这些 AP 参与房间推断。KNOWN/ALL 比率较低可能说明你处于未收录的区域。" />
+
+                <View style="@style/InfoDivider" />
+
+                <TextView
+                    style="@style/InfoParamTitle"
+                    android:text="Name / MAC / RSSI" />
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="For each known AP, the app shows its human‑readable name (mapped from MAC), its hardware MAC address, and its current signal strength (RSSI in dBm). These three fields are the core data used for fingerprint‑based indoor localization.\n\n对于每个已知 AP，应用显示其人类可读的名称（由 MAC 映射）、硬件 MAC 地址以及当前信号强度（RSSI，单位 dBm）。这三个字段是指纹室内定位的核心数据。" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Room Inference Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Room Inference / 房间推断"
+                android:textColor="@color/text_gold"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_dark_gold"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:text="The app determines your indoor position using a two‑step approach:\n\n应用通过以下两步方法确定你的室内位置：" />
+
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:layout_marginTop="8dp"
+                    android:text="1. Room AP Naming — Access points with names following the pattern Building/Floor/RoomID (e.g. 'A/F3/302AP1') encode their physical location. The app parses the top 8 strongest known APs and uses a weighted voting algorithm (RSSI‑based) to infer the most likely room, floor, and building.\n\n1. 房间 AP 命名法——按照 楼栋/楼层/房间编号 格式命名的接入点（例如 'A/F3/302AP1'）编码了其物理位置。应用解析信号最强的 8 个已知 AP，使用基于 RSSI 的加权投票算法推断最可能的房间、楼层和楼栋。" />
+
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:layout_marginTop="8dp"
+                    android:text="2. Fingerprint Fallback — If no room‑named APs are detected, the app falls back to RSSI fingerprint matching: comparing the current vector of (BSSID → RSSI) measurements against a pre‑collected database of RSSI fingerprints labeled with room IDs, using nearest‑neighbor classification.\n\n2. 指纹回退——如果没有检测到房间命名的 AP，应用会回退到 RSSI 指纹匹配：将当前的 (BSSID → RSSI) 测量向量与预先采集的带有房间标签的 RSSI 指纹数据库进行最近邻分类比对。" />
+
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:layout_marginTop="8dp"
+                    android:text="3. Debounce / Stability — To prevent flickering between adjacent rooms, the app applies hysteresis: if the new best room differs from the previous one, it only switches when the new score exceeds the previous score by at least 10%.\n\n3. 防抖 / 稳定性——为防止相邻房间之间的结果跳动，应用采用滞后机制：如果新的最佳房间与上次不同，仅在新得分超过上次得分至少 10% 时才切换。" />
+
+                <TextView
+                    style="@style/InfoParamDesc"
+                    android:layout_marginTop="8dp"
+                    android:text="4. Auto‑Refresh Cycle — The UI refreshes every 1 second and triggers a new Wi‑Fi scan every 6 seconds (Android limits scan frequency). This balance provides responsive updates without being throttled by the system.\n\n4. 自动刷新周期——UI 每 1 秒刷新一次，每 6 秒触发一次新的 Wi‑Fi 扫描（Android 限制扫描频率）。这种平衡在提供及时更新的同时避免被系统限频。" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
