@@ -29,20 +29,6 @@
 
 ---
 
-## Screenshots
-
-> 请将截图放入仓库的 `docs/images/` 目录，并替换下方图片路径。
-
-| Main Screen | Coordinate Positioning | Calibration |
-|---|---|---|
-| ![Main Screen](docs/images/main-screen.png) | ![Coordinate Positioning](docs/images/position-marker.png) | ![Calibration](docs/images/calibration.png) |
-
-| Wi-Fi Dashboard | Parameter Reference | Floor Plan |
-|---|---|---|
-| ![Wi-Fi Dashboard](docs/images/wifi-dashboard.png) | ![Parameter Reference](docs/images/info-screen.png) | ![Floor Plan](docs/images/floor-plan.png) |
-
----
-
 ## Key Features
 
 | Feature | Description |
